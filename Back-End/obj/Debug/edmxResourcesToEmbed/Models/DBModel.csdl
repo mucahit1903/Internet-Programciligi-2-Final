@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB00Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB00Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Kategori" EntityType="DB00Model.Kategori" />
+    <EntitySet Name="Siparisler" EntityType="DB00Model.Siparisler" />
+    <EntitySet Name="Urun" EntityType="DB00Model.Urun" />
+    <EntitySet Name="Uyeler" EntityType="DB00Model.Uyeler" />
+    <AssociationSet Name="FK_Urun_ToKategori" Association="DB00Model.FK_Urun_ToKategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparisler_ToUrun" Association="DB00Model.FK_Siparisler_ToUrun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Siparisler" EntitySet="Siparisler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparisler_ToUyeler" Association="DB00Model.FK_Siparisler_ToUyeler">
+      <End Role="Uyeler" EntitySet="Uyeler" />
+      <End Role="Siparisler" EntitySet="Siparisler" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="katId" />
+    </Key>
+    <Property Name="katId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="katAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Urun" Relationship="DB00Model.FK_Urun_ToKategori" FromRole="Kategori" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Siparisler">
+    <Key>
+      <PropertyRef Name="siparisId" />
+    </Key>
+    <Property Name="siparisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="siparisKodu" Type="Int32" Nullable="false" />
+    <Property Name="siparisUyeId" Type="Int32" Nullable="false" />
+    <Property Name="siparisTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="siparisUrunId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Urun" Relationship="DB00Model.FK_Siparisler_ToUrun" FromRole="Siparisler" ToRole="Urun" />
+    <NavigationProperty Name="Uyeler" Relationship="DB00Model.FK_Siparisler_ToUyeler" FromRole="Siparisler" ToRole="Uyeler" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="urunId" />
+    </Key>
+    <Property Name="urunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urunKodu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urunAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="urunStok" Type="Int32" Nullable="false" />
+    <Property Name="urunFiyatSat" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="urunFiyatAl" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+    <Property Name="urunAciklama" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="urunGorsel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="urunKatId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kategori" Relationship="DB00Model.FK_Urun_ToKategori" FromRole="Urun" ToRole="Kategori" />
+    <NavigationProperty Name="Siparisler" Relationship="DB00Model.FK_Siparisler_ToUrun" FromRole="Urun" ToRole="Siparisler" />
+  </EntityType>
+  <EntityType Name="Uyeler">
+    <Key>
+      <PropertyRef Name="uyeId" />
+    </Key>
+    <Property Name="uyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeSoyadi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeKullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeSifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeTel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeMail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeAdres" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="uyeYetki" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Siparisler" Relationship="DB00Model.FK_Siparisler_ToUyeler" FromRole="Uyeler" ToRole="Siparisler" />
+  </EntityType>
+  <Association Name="FK_Urun_ToKategori">
+    <End Type="DB00Model.Kategori" Role="Kategori" Multiplicity="1" />
+    <End Type="DB00Model.Urun" Role="Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="katId" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="urunKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparisler_ToUrun">
+    <End Type="DB00Model.Urun" Role="Urun" Multiplicity="1" />
+    <End Type="DB00Model.Siparisler" Role="Siparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="Siparisler">
+        <PropertyRef Name="siparisUrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparisler_ToUyeler">
+    <End Type="DB00Model.Uyeler" Role="Uyeler" Multiplicity="1" />
+    <End Type="DB00Model.Siparisler" Role="Siparisler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uyeler">
+        <PropertyRef Name="uyeId" />
+      </Principal>
+      <Dependent Role="Siparisler">
+        <PropertyRef Name="siparisUyeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

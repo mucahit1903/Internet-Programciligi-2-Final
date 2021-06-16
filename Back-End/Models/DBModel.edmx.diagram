@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c703d31887f949e09bc9d48dcfafcd68" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="DB00Model.Kategori" Width="1.5" PointX="2.5" PointY="4.75" />
+        <EntityTypeShape EntityType="DB00Model.Siparisler" Width="1.5" PointX="5.5" PointY="1.875" />
+        <EntityTypeShape EntityType="DB00Model.Urun" Width="1.5" PointX="2.75" PointY="0.875" />
+        <EntityTypeShape EntityType="DB00Model.Uyeler" Width="1.5" PointX="8.625" PointY="1.25" />
+        <AssociationConnector Association="DB00Model.FK_Urun_ToKategori" />
+        <AssociationConnector Association="DB00Model.FK_Siparisler_ToUrun" />
+        <AssociationConnector Association="DB00Model.FK_Siparisler_ToUyeler" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,114 @@
+<mat-toolbar color="primary">
+  <span>{{ dialogBaslik }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Kodu</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Kodu"
+        formControlName="siparisKodu"
+        name="siparisKodu"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Üye Id</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Üye Id"
+        formControlName="siparisUyeId"
+        name="siparisUyeId"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Tarihi</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Tarihi"
+        formControlName="siparisTarih"
+        name="siparisTarih"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Ürün Id</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Ürün Id"
+        formControlName="siparisUrunId"
+        name="siparisUrunId"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Açıklama</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Açıklama"
+        formControlName="siparisAciklama"
+        name="siparisAciklama"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Adres</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Adres"
+        formControlName="siparisAdres"
+        name="siparisAdres"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Ürün Adı</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Ürün Adı"
+        formControlName="siparisurunAdi"
+        name="siparisurunAdi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Üye Adı</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Üye Adı"
+        formControlName="siparisuyeAdi"
+        name="siparisuyeAdi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Sipariş Fiyatı</mat-label>
+      <input
+        matInput
+        placeholder="Sipariş Fiyatı"
+        formControlName="siparisurunFiyatSat"
+        name="siparisurunFiyatSat"
+        required
+        type="text"
+      />
+    </mat-form-field>
+
+
+
+  </form>
+
+  <button mat-stroked-button color="primary" [disabled]="frm.invalid" (click)="dialogRef.close(frm.value)">Kaydet</button>
+  &nbsp;
+  <button mat-stroked-button color="primary" (click)="dialogRef.close()">İptal </button>
+</div>

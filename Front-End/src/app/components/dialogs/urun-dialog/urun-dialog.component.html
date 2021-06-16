@@ -1,0 +1,100 @@
+<mat-toolbar color="primary">
+  <span>{{ dialogBaslik }}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Kodu</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Kodu"
+        formControlName="urunKodu"
+        name="urunKodu"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Adı</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Adı"
+        formControlName="urunAdi"
+        name="urunAdi"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Stok</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Stok"
+        formControlName="urunStok"
+        name="urunStok"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Satış Fiyatı</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Fiyat Sat"
+        formControlName="urunFiyatSat"
+        name="urunFiyatSat"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Alış Fiyatı</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Fİyat Al"
+        formControlName="urunFiyatAl"
+        name="urunFiyatAl"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Açıklama</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Açıklama"
+        formControlName="urunAciklama"
+        name="urunAciklama"
+        required
+        type="text"
+      />
+    </mat-form-field>
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Ürün Görsel</mat-label>
+      <input
+        matInput
+        placeholder="Ürün Görsel"
+        formControlName="urunGorsel"
+        name="urunGorsel"
+
+        type="text"
+      />
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Kategori Adı</mat-label>
+      <mat-select formControlName="urunKatId" placeholder="Ürün Kategori Adı">
+        <mat-option
+          [value]="kategori.katId" *ngFor="let kategori of kategoriler">{{ kategori.katId}} {{kategori.katAdi}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+
+  <button
+    mat-stroked-button    color="primary"    [disabled]="frm.invalid"    (click)="dialogRef.close(frm.value)">Kaydet</button
+  >&nbsp;
+  <button mat-stroked-button color="primary" (click)="dialogRef.close()">    İptal </button>
+</div>
